@@ -60,7 +60,7 @@ public class ch9_practice {
         //15
 
 
-        //17  //詳解
+        //17  //詳解  //題目改自CH9_12
         Circle[] cir = new Circle[3];
         double[] r={1.0,4.0,2.0};
         for(int i=0;i<cir.length;i++){  //將r的值指派給對應的cir[i]
