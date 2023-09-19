@@ -127,7 +127,6 @@ public class ch6_practice {
 
         //11-1
         System.out.println("\nQ11:");   //3X4陣列
-        double sum11=0;
         double[][] temp ={{18.2,17.3,15.0,13.4},{23.8,25.1,20.6,17.8},{20.6,21.5,18.4,15.7}};
         System.out.println("temp內容=");
         for(double[] row: temp){
@@ -137,12 +136,168 @@ public class ch6_practice {
             System.out.println();
         }
         //11-2
-        for(int i=0; i<4; i++){
-            for (int j=0; j<3; j++){
-                sum11+=temp[i][j];
+        for(int i=0; i<4; i++){   //行
+            double sum11 = 0;
+            for (int j=0; j<3; j++){   //列
+                sum11+=temp[j][i];
             }
-            System.out.println("星期"+(i+1)+"均溫="+sum11/3);
+            System.out.println("星期"+(i+1)+"均溫="+sum11/temp.length);
+        }
+        //11-3
+        for(int i=0; i<3; i++){
+            float sum_tem2 = 0;
+            for (int j=0; j<4; j++){
+                sum_tem2+= (float) temp[i][j];
+            }
+            System.out.println("時段"+(i+1)+"均溫="+sum_tem2/temp[0].length);
+        }
+        //11-4
+        double max11 = 0;
+        int week = 0, time=0;
+        for(int i=0; i<3; i++){
+            for (int j=0; j<4; j++){
+                if(temp[i][j]>max11){
+                    max11=temp[i][j];
+                    week=j;
+                    time=i;
+                }
+            }
+        }
+        System.out.println("星期"+(week+1)+"的時段"+(time+1)+"為最高溫="+max11);
+        //11-5
+        double min11 = temp[0][0];
+        int week2 = 0, time2=0;
+        for(int i=0; i<3; i++){
+            for (int j=0; j<4; j++){
+                if(temp[i][j]<min11){
+                    min11=temp[i][j];
+                    week2=j;
+                    time2=i;
+                }
+            }
+        }
+        System.out.println("星期"+(week2+1)+"的時段"+(time2+1)+"為最低溫="+min11);
+
+        //12-1&3
+        System.out.println("\nQ12:");
+        int[][] arr12={{33,32,56,45,33},{77,33,68,45,23},{43,55,43,67,65},{12,16,10,14,15}};
+        int max_sales = 0;
+        int max_position = 0;
+        for(int i=0; i<3; i++){
+            int sum13 =0;
+            for (int j=0; j<5; j++){
+                sum13 += arr12[i][j] * arr12[3][j];
+            }
+            if (max_sales<sum13){
+                max_sales =sum13;
+                max_position = i+1;
+            }
+            System.out.println("第"+(i+1)+"位"+sum13);
+        }
+        System.out.println("最大銷售量"+max_sales);
+        System.out.println("最大銷售員"+max_position);
+
+
+        //12-2&4
+        int max_thing=0;
+        int max_product=0;
+        for(int i=0; i<5; i++){
+            int sum13 =0;
+            for (int j=0; j<3; j++){
+                sum13 += arr12[j][i] * arr12[3][i];
+            }
+            if (max_thing<sum13){
+                max_thing =sum13;
+                max_product = i+1;
+            }
+            System.out.println("第"+(i+1)+"項"+sum13);
+        }
+        System.out.println("最大銷售量"+max_thing);
+        System.out.println("最大銷售產品"+max_product);
+
+        //13
+        System.out.println("\nQ13:");
+        int[][] arr13={{18,21,30},{40,34,61},{41,15,18}};
+        int min13=arr13[0][0];
+        int r=0; int c=0;
+        for (int i=0; i<arr13.length; i++){
+            for (int j=0; j<arr13[i].length; j++){
+                if (arr13[i][j]<min13){
+                    min13=arr13[i][j];
+                    r=i;
+                    c=j;
+                }
+            }
+        }
+        System.out.println("arr13's minimum row="+r+", column="+c);
+
+        //14
+        System.out.println("\nQ14:");
+
+        //15
+        System.out.println("\nQ15:");
+        int[][] arr15={{4,2},{3,4,6},{7,4,8,5}};
+        int max15=0;
+        System.out.println("arr15的內容=");
+        for (int[] row:arr15){
+            for (int i: row){
+                if (i>max15){
+                    max15=i;
+                }
+                System.out.print(i+" ");
+            }System.out.println();
+        }
+        System.out.println("arr15's maximum="+max15);
+
+        //16
+        System.out.println("\nQ16:");
+        int[][] arr16 = new int[6][6];
+        for (int i=0; i<arr16.length; i++){
+            for (int j=0; j<arr16[i].length; j++){
+                arr16[i][j]=(6*i)+j;
+                System.out.print(arr16[i][j]+" ");
+            }
+            System.out.println();
         }
 
+        //17
+        System.out.println("\nQ17:");
+        int[][][] arr17={{{15,85,36},{30,14,37},
+                {47,23,96},{19,39,51}},
+                {{22,16,51},{97,30,12},
+                        {68,77,26},{57,32,76}}};
+
+
+        //18
+        System.out.println("\nQ18:");
+
+        //19
+        System.out.println("\nQ19:");
+
+        //20
+        System.out.println("\nQ20:");
+
+        //21
+        System.out.println("\nQ21:");
+        int[] a21={1,2,3,4};
+        int[] b21={9,8,7,6};
+        int[] c21;
+        c21 = a21;   //要用c去接a的內容, 不然a的內容會不見(直接a=b, a就變成b了)
+        a21 = b21;
+        b21 = c21;
+        System.out.println("a21內容="+ Arrays.toString(a21));
+        System.out.println("b21內容="+ Arrays.toString(b21));
+
+        //22
+        System.out.println("\nQ22:");
+        int[] a22={14,36,31,61,65};
+        int[] b22 = new int[a22.length];
+        for (int i=0; i<a22.length; i++){
+            b22[i]=a22[i];
+        }
+
+        a22[0]=100;
+        System.out.println("a22內容="+ Arrays.toString(a22));
+        System.out.println("b22內容="+ Arrays.toString(b22));
     }
 }

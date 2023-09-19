@@ -127,16 +127,50 @@ public class ch7_practice {
         System.out.println("\nQ23:");
         int[][] arr23={{1,3,5},{8,9,2}};
         square(arr23);
+        System.out.println("now arr23="+ Arrays.deepToString(arr23));
 
-        //24
+        //24   //未完成
         System.out.println("\nQ24:");
-        int[][] arr24={{1,3,5},{8,9,2}};
-        System.out.println("arr24元素平方="+ Arrays.deepToString(square24(arr24)));
-        System.out.println("原本的arr24="+ Arrays.deepToString(arr24));
+//        int[][] arr24={{1,3,5},{8,9,2}};
+//        System.out.println("arr24元素平方="+ Arrays.deepToString(square24(arr24)));
+//        System.out.println("原本的arr24="+ Arrays.deepToString(arr24));
 
         //25
+        System.out.println("\nQ25:");
+        System.out.println("fib_for(6)="+fib_for(6));
 
+        //26
+        System.out.println("\nQ26:");
+        System.out.println("power(5.0, 3)="+power(5.0,3));
 
+        //27
+        System.out.println("\nQ27:");
+        System.out.println("sum27(100)="+sum27(100));
+
+        //28
+        System.out.println("\nQ28:");
+        System.out.println("sum28(5)="+sum28(5));
+
+        //29
+        System.out.println("\nQ29:");
+        System.out.println("triangle(6,3) area="+triangle(6,3));
+        System.out.println("triangle(4.2f,3.3f) area="+triangle(4.2f,3.3f));
+
+        //30
+        System.out.println("\nQ30:");
+        System.out.println("max(8,2)'s maximum="+max(8,2));
+        System.out.println("max(1,5,9)'s maximum="+max(1,5,9));
+
+        //31
+        System.out.println("\nQ31:");
+        int[] arr31={12,7,32,67};
+        System.out.println("smallest(8,9)'s minimum="+smallest(8,9));
+        System.out.println("smallest(arr31)'s minimum="+smallest(arr31));
+
+        //32
+        System.out.println("\nQ32:");
+        System.out.println("area(2)="+area(2));
+        System.out.println("area(2.3)="+area(2.3));
 
     }
     static void greeting(int a){
@@ -222,7 +256,7 @@ public class ch7_practice {
 
     static double area(double r){
         return r*r*3.14;
-    }   //13
+    }   //13&32
 
     static int abs(int a){
         if (a<0){
@@ -328,23 +362,77 @@ public class ch7_practice {
     }   //23
 
     static int[][] square24(int[][] a){
-        int[][] newArr24 = new int[a.length][];
-        for(int i=0; i<a.length; i++){
-            for(int j=0; j<i; j++){
-                newArr24[i][j]= (int)pow(a[i][j],2);
+        int[][] newA = new int[a.length][];
+        for(int r=0; r<a.length; r++){
+            for (int c=0; c<a[r].length; c++){
+                newA[r][c]=a[r][c];
             }
         }
-        return newArr24;
-    }
+        return newA;
+    }   //24  Cannot store to int array because "newA[r]" is null
 
-
-
-//    public static long fib_for(int n){
-//
-//
-//        for(int i=0;i<=n;i++){
+    public static long fib_for(int n){
+        //遞迴
+        if (n>2){
+            return fib_for(n-1)+fib_for(n-2);
+        }else {
+            return 1;
+        }
+        //for迴圈
+//        for(int i=){
 //
 //        }
-//    }
+    }   //25
+
+    static double power(double a, int b){
+        if (b==0){
+            return 1;
+        }else{
+            return a*power(a,b-1);
+        }
+    }   //26
+
+    static int sum27(int n){
+        if(n==1){return 1;}
+        else {return n+sum27(n-1);}
+    }   //27
+
+    static int sum28(int n){
+        if(n==1){return 0;}
+        else {return n*(n-1)+sum28(n-1);}
+    }   //28
+
+    static float triangle(int base, int height){
+        return (float) (base * height) /2;
+    }
+    static float triangle(float base, float height){
+        return (float) (base * height) /2;
+    }   //29
+
+    static int max(int a, int b){
+        if (a>b){
+            return a;
+        }else {return b;}
+    }
+    static int max(int a, int b, int c){
+        if(a>b && a>c){
+            return a;
+        }else if (b>a && b>c){
+            return b;
+        }else {return c;}
+    }   //30
+
+    static int smallest(int a,int b){
+        if (a>b){
+            return b;
+        }else {return a;}
+    }
+    static int smallest(int[] a){
+        return min(a);
+    }   //31
+
+    static int area(int a){
+        return (int) (a*a*3.14);
+    }   //32
 }
 
