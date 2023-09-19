@@ -30,6 +30,14 @@ public class ch15_practice {
 //        morning.start();
 //        night.start();
 
+        //4
+//        Add a1 = new Add(5);
+//        Add a2 = new Add(10);
+//        Thread thread1 = new Thread(a1);
+//        Thread thread2 = new Thread(a2);
+//        thread1.start();
+//        thread2.start();
+
         //5
 //        MyPrint s1 = new MyPrint(5,'*');
 //        MyPrint s2 = new MyPrint(3,'$');
@@ -38,13 +46,38 @@ public class ch15_practice {
 //        t1.start();
 //        t2.start();
 
+        //6
+//        Sub s1 = new Sub(5);
+//        Sub s2 = new Sub(10);
+//        Thread th1 = new Thread(s1);
+//        Thread th2 = new Thread(s2);
+//        th1.start();
+//        th2.start();
+
         //7
 //        sleepThread st1 = new sleepThread("Thread 1",1000);
 //        sleepThread st2 = new sleepThread("Thread 2",2500);
 //        Thread t1 = new Thread(st1);
 //        Thread t2 = new Thread(st2);
-//        t1.start();
 //        t2.start();
+//        t1.start();
+
+
+        //8
+//        sleepThread1508 t1 = new sleepThread1508("Thread 1",1000,5);
+//        sleepThread1508 t2 = new sleepThread1508("Thread 2",4500,10);
+//        sleepThread1508 t3 = new sleepThread1508("Thread 3",3500,5);
+//        Thread tt1 = new Thread(t1);
+//        Thread tt2 = new Thread(t2);
+//        Thread tt3 = new Thread(t3);
+//        tt2.start();
+//        tt1.start();
+//        try {
+//            tt1.join();
+//            tt3.start();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
         //9
         //看不太懂題目敘述
@@ -52,6 +85,14 @@ public class ch15_practice {
 //        Pig p1 = new Pig();
 //        Thread tp1 = new Thread(p1);
 //        tp1.start();
+
+        //10
+//        Greeting g1 = new Greeting("Hello",1000);
+//        Greeting g2 = new Greeting("Goodbye",2500);
+//        Thread gg1 = new Thread(g1);
+//        Thread gg2 = new Thread(g2);
+//        gg1.start();
+//        gg2.start();
 
         //11
 //        Animal Tom = new Animal("狸克");
@@ -76,6 +117,14 @@ public class ch15_practice {
 //        }
 //        System.out.println("All Threads are finished");
 
+        //12
+//        PrePaid p1 = new PrePaid();
+//        PrePaid p2 = new PrePaid();
+//        PrePaid p3 = new PrePaid();
+//        p1.start();
+//        p2.start();
+//        p3.start();
+
         //13
 //        CData cd = new CData(5,1500);
 //        CData cd2 = new CData(9,1000);
@@ -88,6 +137,9 @@ public class ch15_practice {
         //卡在計算質數程式
         //看了答案還是不懂
         //待補
+
+        //test
+
 
     }
 }
@@ -107,7 +159,24 @@ class testt extends Thread{
     }
 
 
-}
+}   //2&3
+
+class Add implements Runnable{
+    private int n;
+    private int sum=0;
+    public Add(int a){
+        n=a;
+    }
+
+    @Override
+    public void run() {
+        for(int i=1; i<=n; i++){
+            sum+=i;
+        }
+        System.out.println("sum="+sum);
+    }
+
+}   //4
 
 class MyPrint implements Runnable{
     private int n;
@@ -125,7 +194,23 @@ class MyPrint implements Runnable{
             System.out.print(ch);
         }
     }
-}
+}   //5
+
+class Sub implements Runnable{
+    private int n;
+    private int sum=1;
+    public Sub(int a){
+        n=a;
+    }
+
+    @Override
+    public void run() {
+        for(int i=1; i<=n; i++){
+            sum*=i;
+        }
+        System.out.println("sum="+sum);
+    }
+}   //6
 
 class sleepThread implements Runnable{
     public String string;
@@ -148,7 +233,33 @@ class sleepThread implements Runnable{
         }
 
     }
-}
+}   //7
+
+class sleepThread1508 implements Runnable{
+    public String string;
+    public int sec;
+    public int count;
+
+    public sleepThread1508(String string, int sec, int count) {
+        this.string = string;
+        this.sec = sec;
+        this.count = count;
+    }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(sec);
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        for (int i=1; i<=count; i++){
+            System.out.println(string+" is running");
+        }
+
+    }
+}   //8
 
 class Pig implements Runnable{
     @Override
@@ -169,7 +280,30 @@ class Wolf implements Runnable{
         System.out.println("大野狼非常的生氣");
         System.out.println("他決定要從煙囪爬進小豬的家裡");
     }
-}
+}   //9
+
+class Greeting implements Runnable{
+
+    String s;
+    int sec;
+
+    public Greeting(String s, int sec) {
+        this.s = s;
+        this.sec = sec;
+    }
+
+    @Override
+    public void run() {
+        for (int i=1; i<=5; i++){
+            try {
+                Thread.sleep(sec);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(s+" "+i);
+        }
+    }
+}   //10
 
 class Animal implements Runnable{
     private String id;
@@ -184,7 +318,30 @@ class Animal implements Runnable{
             System.out.println(id+"來了"+i+"次");
         }
     }
-}
+}   //11
+
+class PrePaid extends Thread{
+    static int sum=200;
+    static int fee;
+
+    public PrePaid() {
+    }
+
+    public synchronized static void talk(){
+        while (sum>10){
+            fee= (int) (Math.random()*100)+1;
+            sum-=fee;
+            System.out.println("打了"+fee+", 餘額"+sum);
+        }
+    }
+    @Override
+    public void run() {
+        while (sum>10){
+            talk();
+        }
+
+    }
+}   //12
 
 class CData extends Thread{
     private static int sum = 30;
@@ -210,7 +367,7 @@ class CData extends Thread{
             System.out.println("減"+a+"後,餘數為"+sum);
         }
     }
-}
+}    //13
 
 class primeNum extends Thread{
     public int min;
@@ -230,4 +387,4 @@ class primeNum extends Thread{
     public void run(){
 
     }
-}
+}    //15
