@@ -126,23 +126,47 @@ public class ch6_practice {
         }
 
         //11-1
-        System.out.println("\nQ11:");   //3X4陣列
-        double sum11=0;
-        double[][] temp ={{18.2,17.3,15.0,13.4},{23.8,25.1,20.6,17.8},{20.6,21.5,18.4,15.7}};
-        System.out.println("temp內容=");
-        for(double[] row: temp){
-            for(double n: row){
-                System.out.print(n+" ");
-            }
-            System.out.println();
-        }
-        //11-2
-        for(int i=0; i<4; i++){
-            for (int j=0; j<3; j++){
-                sum11+=temp[i][j];
-            }
-            System.out.println("星期"+(i+1)+"均溫="+sum11/3);
+//        System.out.println("\nQ11:");   //3X4陣列
+//        double sum11=0;
+//        double[][] temp ={{18.2,17.3,15.0,13.4},{23.8,25.1,20.6,17.8},{20.6,21.5,18.4,15.7}};
+//        System.out.println("temp內容=");
+//        for(double[] row: temp){
+//            for(double n: row){
+//                System.out.print(n+" ");
+//            }
+//            System.out.println();
+//        }
+//        //11-2
+//        for(int i=0; i<4; i++){
+//            for (int j=0; j<3; j++){
+//                sum11+=temp[i][j];
+//            }
+//            System.out.println("星期"+(i+1)+"均溫="+sum11/3);
+//        }
+
+
+
+        //21
+        System.out.println("\nQ21:");
+        int[] a21={1,2,3,4};
+        int[] b21={9,8,7,6};
+        int[] c21;
+        c21 = a21;   //要用c去接a的內容, 不然a的內容會不見(直接a=b, a就變成b了)
+        a21 = b21;
+        b21 = c21;
+        System.out.println("a21內容="+ Arrays.toString(a21));
+        System.out.println("b21內容="+ Arrays.toString(b21));
+
+        //22
+        System.out.println("\nQ22:");
+        int[] a22={14,36,31,61,65};
+        int[] b22 = new int[a22.length];
+        for (int i=0; i<a22.length; i++){
+            b22[i]=a22[i];
         }
 
+        a22[0]=100;
+        System.out.println("a22內容="+ Arrays.toString(a22));
+        System.out.println("b22內容="+ Arrays.toString(b22));
     }
 }
