@@ -311,7 +311,29 @@ public class ch5_practice {
 
         //26
 
+        //27
+        System.out.println("\nQ27:");
+        int xy = 0;
+        for (int i=0; i<=100; i++){
+            if(i%2==0 && i%3==0 && i%12!=0){
+                continue;
+            }
+            System.out.print(i+" ");
+        }
 
+
+        //28
+        System.out.println("\nQ28:");
+        int sum28=0;
+        int n=0;
+        for(int i=1; i<100; i++){
+            sum28+=i*i;
+            n++;
+            if (sum28>320){
+                break;
+            }
+        }
+        System.out.println("n="+n);
 
         //29
 //        Scanner scn29 = new Scanner(System.in);

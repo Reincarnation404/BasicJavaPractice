@@ -3,6 +3,8 @@ package org.example;
 import java.util.Arrays;
 import java.util.OptionalDouble;
 
+import static java.lang.Math.pow;
+
 public class ch6_practice {
     public static void main(String[] args) {
         //3
@@ -76,28 +78,41 @@ public class ch6_practice {
         }System.out.println("最大值的索引值="+max+"\n最小值的索引值="+min);
 
 
-        //7  byChatGPT
+        //7
+        //詳解
         System.out.println("\nQ7:");
         int[] arr07={12,15,8,43};
+        int[] arr07_2=new int[4];
 
-        int left = 0;
-        int right = arr07.length - 1;
-
-        while (left < right) {
-            // 交换数组中左右两个元素的位置
-            int temp = arr07[left];
-            arr07[left] = arr07[right];
-            arr07[right] = temp;
-
-            // 移动指针以继续交换下一对元素
-            left++;
-            right--;
+        System.out.print("arr07[]元素: ");
+        for(int i=0;i<arr07.length;i++){
+            System.out.printf("%d ",arr07[i]);
+            arr07_2[(arr07.length-i)-1]=arr07[i];
         }
+        System.out.print("\narr07_2[]元素: ");
+        for(int i=0;i<arr07_2.length;i++)
+            System.out.printf("%d ",arr07_2[i]);
 
-        // 打印反向排列后的数组
-        for (int i = 0; i < arr07.length; i++) {
-            System.out.print(arr07[i] + " ");
-        }
+        //byChatGPT
+//        int[] arr07={12,15,8,43};
+//
+//        int left = 0;
+//        int right = arr07.length - 1;
+//
+//        while (left < right) {
+//            // 交换数组中左右两个元素的位置
+//            int temp = arr07[left];
+//            arr07[left] = arr07[right];
+//            arr07[right] = temp;
+//
+//            // 移动指针以继续交换下一对元素
+//            left++;
+//            right--;
+//        }
+//        // 印出反向排列後的內容
+//        for (int i = 0; i < arr07.length; i++) {
+//            System.out.print(arr07[i] + " ");
+//        }
 
         //8
         System.out.println("\nQ8:");
@@ -233,6 +248,13 @@ public class ch6_practice {
 
         //14
         System.out.println("\nQ14:");
+        int[][] arr14={{1,2,3},{4,5,6}};
+        for (int[] row: arr14){
+            for (int i: row){
+                System.out.print((int)pow(i,2)+" ");
+            }
+            System.out.println();
+        }
 
         //15
         System.out.println("\nQ15:");
@@ -266,16 +288,77 @@ public class ch6_practice {
                 {47,23,96},{19,39,51}},
                 {{22,16,51},{97,30,12},
                         {68,77,26},{57,32,76}}};
+        int min17= arr17[0][0][0];
+        for(int p=0; p<arr17.length; p++){
+            for(int row=0; row<arr17[p].length; row++){
+                for (int col=0; col<arr17[p][row].length; col++){
+                    if(arr17[p][row][col]<min17){
+                        min17=arr17[p][row][col];
+                    }
+                    System.out.print(arr17[p][row][col]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+        System.out.println("arr17's minimum="+min17);
 
 
         //18
         System.out.println("\nQ18:");
+        for (int[][] ints : arr17) {
+            for (int[] anInt : ints) {
+                for (int i : anInt) {
+
+                    System.out.print(i + " ");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
 
         //19
         System.out.println("\nQ19:");
+        System.out.println("arr19的內容=");
+        int[][][] arr19={{{82,13,21},{49,12,6},
+                {4,18,30},{50,24,62}},
+                {{7,9,14},{20,43,19},
+                        {20,68,33},{15,17,38}}};
+        for (int[][] ints: arr19){
+            for (int[] anInt: ints){
+                for (int i: anInt){
+                    if(i%2==0){
+                        System.out.print(0+" ");
+                    }else {
+                        System.out.print(i+" ");
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
 
         //20
         System.out.println("\nQ20:");
+        int[][][] arr20={{{15,50,65},{38,94,25},
+                {79,44,19},{89,54,73}},
+                {{14,90,46},{43,23,67},
+                        {32,56,78},{94,78,40}}};
+        for (int[][] ints: arr20){
+            for (int[] anInt: ints){
+                for (int i: anInt){
+                    if(i>50){
+                        System.out.print(99+" ");
+                    }else {
+                        System.out.print(i+" ");
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+
+
 
         //21
         System.out.println("\nQ21:");
@@ -295,7 +378,6 @@ public class ch6_practice {
         for (int i=0; i<a22.length; i++){
             b22[i]=a22[i];
         }
-
         a22[0]=100;
         System.out.println("a22內容="+ Arrays.toString(a22));
         System.out.println("b22內容="+ Arrays.toString(b22));

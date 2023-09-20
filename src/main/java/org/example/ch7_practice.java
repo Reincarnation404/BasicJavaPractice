@@ -131,9 +131,9 @@ public class ch7_practice {
 
         //24   //未完成
         System.out.println("\nQ24:");
-//        int[][] arr24={{1,3,5},{8,9,2}};
-//        System.out.println("arr24元素平方="+ Arrays.deepToString(square24(arr24)));
-//        System.out.println("原本的arr24="+ Arrays.deepToString(arr24));
+        int[][] arr24={{1,3,5},{8,9,2}};
+        System.out.println("arr24元素平方="+ Arrays.deepToString(square24(arr24)));
+        System.out.println("原本的arr24="+ Arrays.deepToString(arr24));
 
         //25
         System.out.println("\nQ25:");
@@ -364,12 +364,13 @@ public class ch7_practice {
     static int[][] square24(int[][] a){
         int[][] newA = new int[a.length][];
         for(int r=0; r<a.length; r++){
+            newA[r] = new int[a[r].length];   //沒有這句會出現: Cannot store to int array because "newA[r]" is null
             for (int c=0; c<a[r].length; c++){
-                newA[r][c]=a[r][c];
+                newA[r][c]=(int)pow(a[r][c],2);
             }
         }
         return newA;
-    }   //24  Cannot store to int array because "newA[r]" is null
+    }   //24
 
     public static long fib_for(int n){
         //遞迴
